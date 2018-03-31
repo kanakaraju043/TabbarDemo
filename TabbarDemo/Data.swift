@@ -14,7 +14,7 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 import Foundation
 struct Data : Codable {
 	let products : [Products]?
-	let total_products : Int?
+	let total_products : String?
 	let total_pages : Int?
 
 	enum CodingKeys: String, CodingKey {
@@ -27,7 +27,7 @@ struct Data : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		products = try values.decodeIfPresent([Products].self, forKey: .products)
-		total_products = try values.decodeIfPresent(Int.self, forKey: .total_products)
+		total_products = try values.decodeIfPresent(String.self, forKey: .total_products)
 		total_pages = try values.decodeIfPresent(Int.self, forKey: .total_pages)
 	}
 

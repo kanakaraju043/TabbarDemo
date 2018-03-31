@@ -13,9 +13,10 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct Products : Codable {
-	let id : Int?
+	let id : String?
 	let name : String?
-	let short_description : String?
+	
+    let short_description : String?
 	let description : String?
 	let sKU : String?
 	let currency_code : String?
@@ -24,28 +25,30 @@ struct Products : Codable {
 	let new_from_date : String?
 	let new_to_date : String?
 	let brand_name : String?
-	let boutique_id : Int?
+	let boutique_id : String?
 	let boutique_name : String?
 	let image : String?
 	let images : [String]?
 	let video : String?
-	let configurable_option : [String]?
-	let related_products : [String]?
-	let reviews : [String]?
+    
+	//let configurable_option : [String]?
+	//let related_products : [String]?
+	//let reviews : [String]?
+    //let average_rating : String?
+
 	let is_saleable : Int?
 	let product_type : String?
 	let item_in_cart : Int?
 	let item_in_wishlist : Int?
-	let average_rating : Int?
-	let enable_flash_sale : Int?
-	let flash_discount : String?
-	let final_price : Double?
-	let regular_price : Double?
+	let enable_flash_sale : String?
+    let flash_discount : String?
+	let final_price : String?
+	let regular_price : String?
 	let start_date : String?
 	let end_date : String?
 	let set_reminder : String?
 	let index : String?
-	let items_sold : Int?
+	let items_sold : String?
 	let size_guide : String?
 
 	enum CodingKeys: String, CodingKey {
@@ -66,16 +69,18 @@ struct Products : Codable {
 		case image = "image"
 		case images = "images"
 		case video = "video"
-		case configurable_option = "configurable_option"
-		case related_products = "related_products"
-		case reviews = "reviews"
+        
+		//case configurable_option = "configurable_option"
+		//case related_products = "related_products"
+		//case reviews = "reviews"
+        //case average_rating = "average_rating"
+
 		case is_saleable = "is_saleable"
 		case product_type = "product_type"
 		case item_in_cart = "item_in_cart"
 		case item_in_wishlist = "item_in_wishlist"
-		case average_rating = "average_rating"
 		case enable_flash_sale = "enable_flash_sale"
-		case flash_discount = "flash_discount"
+        case flash_discount = "flash_discount"
 		case final_price = "final_price"
 		case regular_price = "regular_price"
 		case start_date = "start_date"
@@ -84,44 +89,49 @@ struct Products : Codable {
 		case index = "index"
 		case items_sold = "items_sold"
 		case size_guide = "size_guide"
+ 
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		id = try values.decodeIfPresent(Int.self, forKey: .id)
+		id = try values.decodeIfPresent(String.self, forKey: .id)
 		name = try values.decodeIfPresent(String.self, forKey: .name)
+       
 		short_description = try values.decodeIfPresent(String.self, forKey: .short_description)
 		description = try values.decodeIfPresent(String.self, forKey: .description)
-		sKU = try values.decodeIfPresent(String.self, forKey: .SKU)
+        sKU = try values.decodeIfPresent(String.self, forKey: .sKU)
 		currency_code = try values.decodeIfPresent(String.self, forKey: .currency_code)
 		remaining_quantity = try values.decodeIfPresent(Int.self, forKey: .remaining_quantity)
 		is_featured = try values.decodeIfPresent(Int.self, forKey: .is_featured)
 		new_from_date = try values.decodeIfPresent(String.self, forKey: .new_from_date)
 		new_to_date = try values.decodeIfPresent(String.self, forKey: .new_to_date)
 		brand_name = try values.decodeIfPresent(String.self, forKey: .brand_name)
-		boutique_id = try values.decodeIfPresent(Int.self, forKey: .boutique_id)
+		boutique_id = try values.decodeIfPresent(String.self, forKey: .boutique_id)
 		boutique_name = try values.decodeIfPresent(String.self, forKey: .boutique_name)
 		image = try values.decodeIfPresent(String.self, forKey: .image)
 		images = try values.decodeIfPresent([String].self, forKey: .images)
 		video = try values.decodeIfPresent(String.self, forKey: .video)
-		configurable_option = try values.decodeIfPresent([String].self, forKey: .configurable_option)
-		related_products = try values.decodeIfPresent([String].self, forKey: .related_products)
-		reviews = try values.decodeIfPresent([String].self, forKey: .reviews)
-		is_saleable = try values.decodeIfPresent(Int.self, forKey: .is_saleable)
+		
+        //configurable_option = try values.decodeIfPresent([String].self, forKey: .configurable_option)
+	    //related_products = try values.decodeIfPresent([String].self, forKey: .related_products)
+		//reviews = try values.decodeIfPresent([String].self, forKey: .reviews)
+        //average_rating = try values.decodeIfPresent(String.self, forKey: .average_rating)
+
+        is_saleable = try values.decodeIfPresent(Int.self, forKey: .is_saleable)
 		product_type = try values.decodeIfPresent(String.self, forKey: .product_type)
 		item_in_cart = try values.decodeIfPresent(Int.self, forKey: .item_in_cart)
 		item_in_wishlist = try values.decodeIfPresent(Int.self, forKey: .item_in_wishlist)
-		average_rating = try values.decodeIfPresent(Int.self, forKey: .average_rating)
-		enable_flash_sale = try values.decodeIfPresent(Int.self, forKey: .enable_flash_sale)
+		enable_flash_sale = try values.decodeIfPresent(String.self, forKey: .enable_flash_sale)
 		flash_discount = try values.decodeIfPresent(String.self, forKey: .flash_discount)
-		final_price = try values.decodeIfPresent(Double.self, forKey: .final_price)
-		regular_price = try values.decodeIfPresent(Double.self, forKey: .regular_price)
+		final_price = try values.decodeIfPresent(String.self, forKey: .final_price)
+		regular_price = try values.decodeIfPresent(String.self, forKey: .regular_price)
 		start_date = try values.decodeIfPresent(String.self, forKey: .start_date)
 		end_date = try values.decodeIfPresent(String.self, forKey: .end_date)
 		set_reminder = try values.decodeIfPresent(String.self, forKey: .set_reminder)
 		index = try values.decodeIfPresent(String.self, forKey: .index)
-		items_sold = try values.decodeIfPresent(Int.self, forKey: .items_sold)
+		items_sold = try values.decodeIfPresent(String.self, forKey: .items_sold)
 		size_guide = try values.decodeIfPresent(String.self, forKey: .size_guide)
+
 	}
 
 }
